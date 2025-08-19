@@ -1,9 +1,9 @@
 import express from 'express';
-import { multerUpload } from '../../config/multer.config';
+// import { multerUpload } from '../../config/multer.config';
 import { parseBody } from '../../middlewares/bodyParser';
-import validateImageFileRequest from '../../middlewares/validateImageFileRequest';
+// import validateImageFileRequest from '../../middlewares/validateImageFileRequest';
 import validateRequest from '../../middlewares/validateRequest';
-import { ImageFilesArrayZodSchema } from '../../zod/image.validation';
+// import { ImageFilesArrayZodSchema } from '../../zod/image.validation';
 import { ItemControllers } from './item.controller';
 import { ItemValidation } from './item.validation';
 import auth from '../../middlewares/auth';
@@ -14,8 +14,8 @@ const router = express.Router();
 router.post(
   '/',
   auth(USER_ROLE.USER),
-  multerUpload.fields([{ name: 'itemImages' }]),
-  validateImageFileRequest(ImageFilesArrayZodSchema),
+  // multerUpload.fields([{ name: 'itemImages' }]),
+  // validateImageFileRequest(ImageFilesArrayZodSchema),
   parseBody,
   validateRequest(ItemValidation.createItemValidationSchema),
   ItemControllers.createItem

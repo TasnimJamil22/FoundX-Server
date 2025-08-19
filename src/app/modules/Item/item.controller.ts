@@ -9,12 +9,12 @@ const createItem = catchAsync(async (req, res) => {
   if (!req.files) {
     throw new AppError(400, 'Please upload an image');
   }
-
+  // console.log(req.files);
   const item = await ItemServices.createItemIntoDB(
     req.body,
     req.files as TImageFiles
   );
-
+  console.log('image file:', req.files);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
